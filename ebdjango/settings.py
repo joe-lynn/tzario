@@ -6,19 +6,21 @@ SECRET_KEY = '8lk^=252g^p(*)t1eo&i=yw815#e+2@aosf^l4i(5*7&h-z!dp'
 
 
 #test
+'''
 DEBUG = True
+'''
 
 
 #prod
-'''
 DEBUG = False
-'''
+
 
 
 ALLOWED_HOSTS = [
     'django-env.4na5nirfvf.us-east-1.elasticbeanstalk.com',
     '127.0.0.1',
     'www.tzar.io',
+    'tzar.io',
 ]
 
 INSTALLED_APPS = [
