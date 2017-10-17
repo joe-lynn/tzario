@@ -39,19 +39,117 @@
 </nav>
 
     <div class="container">
-    {%  for game_list in format_game_list %}
-        <div class="story-content">
-            <div class="row story-hover">
-        {% for game in game_list %}
-            <div class="col-sm-4 col-md-4">
-                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
-                  <img src="media/{{ game.game_image }}" alt="...">
-                </a>
+        <ul class="nav nav-pills nav-justified">
+          <li role="presentation" class="active"><a data-toggle="tab" href="#popular">Popular</a></li>
+          <li role="presentation"><a data-toggle="tab" href="#mobile">Mobile-Friendly</a></li>
+          <li role="presentation"><a data-toggle="tab" href="#shooter">Shooter</a></li>
+          <li role="presentation"><a data-toggle="tab" href="#freeworld">Free for all</a></li>
+          <li role="presentation"><a data-toggle="tab" href="#strategy">Strategy</a></li>
+          <li role="presentation"><a data-toggle="tab" href="#racing">Racing</a></li>
+        </ul>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+
             </div>
-        {% endfor %}
+            <div class="col-md-10">
+                <div class="tab-content">
+                  <div id="popular" class="tab-pane fade in active">
+                        {%  for game_list in format_game_list %}
+                        <div class="story-content">
+                            <div class="row story-hover">
+                        {% for game in game_list %}
+                            <div class="col-sm-4 col-md-4">
+                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
+                                  <img src="media/{{ game.game_image }}" alt="...">
+                                </a>
+                            </div>
+                        {% endfor %}
+                            </div>
+                        </div>
+                        {%  endfor %}
+                  </div>
+                  <div id="mobile" class="tab-pane fade">
+                        {%  for game_list in format_mobile_list %}
+                        <div class="story-content">
+                            <div class="row story-hover">
+                        {% for game in game_list %}
+                            <div class="col-sm-4 col-md-4">
+                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
+                                  <img src="media/{{ game.game_image }}" alt="...">
+                                </a>
+                            </div>
+                        {% endfor %}
+                            </div>
+                        </div>
+                        {%  endfor %}
+                  </div>
+                  <div id="shooter" class="tab-pane fade">
+                        {%  for game_list in format_shooter_list %}
+                        <div class="story-content">
+                            <div class="row story-hover">
+                        {% for game in game_list %}
+                            <div class="col-sm-4 col-md-4">
+                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
+                                  <img src="media/{{ game.game_image }}" alt="...">
+                                </a>
+                            </div>
+                        {% endfor %}
+                            </div>
+                        </div>
+                        {%  endfor %}
+                  </div>
+                  <div id="free" class="tab-pane fade">
+                        {%  for game_list in format_freeworld_list %}
+                        <div class="story-content">
+                            <div class="row story-hover">
+                        {% for game in game_list %}
+                            <div class="col-sm-4 col-md-4">
+                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
+                                  <img src="media/{{ game.game_image }}" alt="...">
+                                </a>
+                            </div>
+                        {% endfor %}
+                            </div>
+                        </div>
+                        {%  endfor %}
+                  </div>
+                  <div id="strategy" class="tab-pane fade">
+                        {%  for game_list in format_strategy_list %}
+                        <div class="story-content">
+                            <div class="row story-hover">
+                        {% for game in game_list %}
+                            <div class="col-sm-4 col-md-4">
+                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
+                                  <img src="media/{{ game.game_image }}" alt="...">
+                                </a>
+                            </div>
+                        {% endfor %}
+                            </div>
+                        </div>
+                        {%  endfor %}
+                  </div>
+                  <div id="racing" class="tab-pane fade">
+                        {%  for game_list in format_racing_list %}
+                        <div class="story-content">
+                            <div class="row story-hover">
+                        {% for game in game_list %}
+                            <div class="col-sm-4 col-md-4">
+                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
+                                  <img src="media/{{ game.game_image }}" alt="...">
+                                </a>
+                            </div>
+                        {% endfor %}
+                            </div>
+                        </div>
+                        {%  endfor %}
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+
             </div>
         </div>
-    {%  endfor %}
     </div>
 
 </body>

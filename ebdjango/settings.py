@@ -6,14 +6,13 @@ SECRET_KEY = '8lk^=252g^p(*)t1eo&i=yw815#e+2@aosf^l4i(5*7&h-z!dp'
 
 
 #test
-'''
 DEBUG = True
-'''
 
 
 #prod
+'''
 DEBUG = False
-
+'''
 
 
 ALLOWED_HOSTS = [
