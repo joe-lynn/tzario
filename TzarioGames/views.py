@@ -60,7 +60,10 @@ def index(request):
 
     counter = 0
     temp_game_list = []
+    print(unformat_freeworld_list)
     for game in unformat_freeworld_list:
+        print(game)
+        print(game.game_category)
         if (game.game_category == "freeworld"):
             if counter == 2:
                 temp_game_list.append(game)
@@ -99,7 +102,6 @@ def index(request):
                 temp_game_list.append(game)
                 counter += 1
     format_racing_list.append(temp_game_list)
-
 
     template = loader.get_template('TzarioGames/index.html')
     context = {
