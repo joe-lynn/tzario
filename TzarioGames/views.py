@@ -7,15 +7,10 @@ from .models import Game
 def index(request):
     unformat_game_list = Game.objects.all()
     format_game_list = []
-    unformat_mobile_list = Game.objects.all()
     format_mobile_list = []
-    unformat_freeworld_list = Game.objects.all()
     format_freeworld_list = []
-    unformat_strategy_list = Game.objects.all()
     format_strategy_list = []
-    unformat_racing_list = Game.objects.all()
     format_racing_list = []
-    unformat_shooter_list = Game.objects.all()
     format_shooter_list = []
 
     counter = 0
