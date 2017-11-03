@@ -23,8 +23,7 @@ class Game(models.Model):
     game_image = models.ImageField(upload_to='media/', height_field='game_image_height', width_field='game_image_width')
     game_url = models.CharField(max_length=200)
     game_added_date = models.DateField(default=timezone.now)
-    game_category = models.ManyToManyField(Category)
-    game_tag = models.ManyToManyField(Tag)
+    game_category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.game_name

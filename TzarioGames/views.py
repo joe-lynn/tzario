@@ -3,6 +3,7 @@ from django.template import loader
 
 from .models import Game
 
+
 def index(request):
     unformat_game_list = Game.objects.all()
     format_game_list = []
@@ -19,89 +20,86 @@ def index(request):
 
     counter = 0
     temp_game_list = []
-    for game in unformat_game_list:
+    for game_obj in unformat_game_list:
         if counter == 2:
-            temp_game_list.append(game)
+            temp_game_list.append(game_obj)
             format_game_list.append(temp_game_list)
             temp_game_list = []
             counter = 0
         else:
-            temp_game_list.append(game)
-            counter+=1
+            temp_game_list.append(game_obj)
+            counter += 1
     format_game_list.append(temp_game_list)
 
     counter = 0
     temp_game_list = []
-    for game in unformat_mobile_list:
-        if(game.game_category == "mobile"):
+    for game_obj in unformat_game_list:
+        if game_obj.game_category.category_name == "mobile":
             if counter == 2:
-                temp_game_list.append(game)
+                temp_game_list.append(game_obj)
                 format_mobile_list.append(temp_game_list)
                 temp_game_list = []
                 counter = 0
             else:
-                temp_game_list.append(game)
+                temp_game_list.append(game_obj)
                 counter += 1
     format_mobile_list.append(temp_game_list)
 
     counter = 0
     temp_game_list = []
-    for game in unformat_shooter_list:
-        if (game.game_category == "shooter"):
+    for game_obj in unformat_game_list:
+        if game_obj.game_category.category_name == "freeworld":
             if counter == 2:
-                temp_game_list.append(game)
-                format_shooter_list.append(temp_game_list)
-                temp_game_list = []
-                counter = 0
-            else:
-                temp_game_list.append(game)
-                counter += 1
-    format_shooter_list.append(temp_game_list)
-
-    counter = 0
-    temp_game_list = []
-    print(unformat_freeworld_list)
-    for game in unformat_freeworld_list:
-        print(game)
-        print(game.game_category)
-        if (game.game_category == "freeworld"):
-            if counter == 2:
-                temp_game_list.append(game)
+                temp_game_list.append(game_obj)
                 format_freeworld_list.append(temp_game_list)
                 temp_game_list = []
                 counter = 0
             else:
-                temp_game_list.append(game)
+                temp_game_list.append(game_obj)
                 counter += 1
     format_freeworld_list.append(temp_game_list)
 
     counter = 0
     temp_game_list = []
-    for game in unformat_strategy_list:
-        if (game.game_category == "strategy"):
+    for game_obj in unformat_game_list:
+        if game_obj.game_category.category_name == "strategy":
             if counter == 2:
-                temp_game_list.append(game)
+                temp_game_list.append(game_obj)
                 format_strategy_list.append(temp_game_list)
                 temp_game_list = []
                 counter = 0
             else:
-                temp_game_list.append(game)
+                temp_game_list.append(game_obj)
                 counter += 1
     format_strategy_list.append(temp_game_list)
 
     counter = 0
     temp_game_list = []
-    for game in unformat_racing_list:
-        if (game.game_category == "racing"):
+    for game_obj in unformat_game_list:
+        if game_obj.game_category.category_name == "racing":
             if counter == 2:
-                temp_game_list.append(game)
+                temp_game_list.append(game_obj)
                 format_racing_list.append(temp_game_list)
                 temp_game_list = []
                 counter = 0
             else:
-                temp_game_list.append(game)
+                temp_game_list.append(game_obj)
                 counter += 1
     format_racing_list.append(temp_game_list)
+
+    counter = 0
+    temp_game_list = []
+    for game_obj in unformat_game_list:
+        if game_obj.game_category.category_name == "shooter":
+            if counter == 2:
+                temp_game_list.append(game_obj)
+                format_shooter_list.append(temp_game_list)
+                temp_game_list = []
+                counter = 0
+            else:
+                temp_game_list.append(game_obj)
+                counter += 1
+    format_shooter_list.append(temp_game_list)
 
     template = loader.get_template('TzarioGames/index.html')
     context = {
