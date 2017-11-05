@@ -3,152 +3,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'TzarioGames/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'TzarioGames/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'TzarioGames/index_html.css' %}" />
     <script src="{%  static 'TzarioGames/jquery-3.1.1.min.js' %}"></script>
-    <script src="{%  static 'TzarioGames/bootstrap.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="{%  static 'TzarioGames/bootstrap.min.js' %}"></script>
 
     <meta charset="UTF-8">
     <title>Tzario</title>
     <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}/favicon.ico"/>
 </head>
 <body>
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+    <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" href="/">Tzar.io</a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/contact/">Contact</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-    <div class="container">
-        <ul class="nav nav-pills nav-justified">
-          <li role="presentation" class="active"><a data-toggle="tab" href="#popular">Popular</a></li>
-          <li role="presentation"><a data-toggle="tab" href="#mobile">Mobile-Friendly</a></li>
-          <li role="presentation"><a data-toggle="tab" href="#shooter">Shooter</a></li>
-          <li role="presentation"><a data-toggle="tab" href="#freeworld">Free for all</a></li>
-          <li role="presentation"><a data-toggle="tab" href="#strategy">Strategy</a></li>
-          <li role="presentation"><a data-toggle="tab" href="#racing">Racing</a></li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact/">Contact</a>
+          </li>
         </ul>
-        <br>
-        <div class="row">
-            <div class="col-md-1">
+      </div>
+    </nav>
+    <br>
+    <div class="container">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#popular" role="tab">Popular</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#mobile" role="tab">Mobile-Friendly</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#freeworld" role="tab">Open World</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#strategy" role="tab">Strategy</a>
+          </li>
+        </ul>
 
-            </div>
-            <div class="col-md-10">
-                <div class="tab-content">
-                  <div id="popular" class="tab-pane fade in active">
-                        {%  for game_list in format_game_list %}
-                        <div class="story-content">
-                            <div class="row story-hover">
-                        {% for game in game_list %}
-                            <div class="col-sm-4 col-md-4">
-                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
-                                  <img src="media/{{ game.game_image }}" alt="...">
-                                </a>
-                            </div>
-                        {% endfor %}
-                            </div>
-                        </div>
-                        {%  endfor %}
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="popular" role="tabpanel">
+              <div class="row">
+                  {% for game in unformat_game_list %}
+                  <div class="col-3">
+                      <a href="{% url 'TzarioGames:game' game.game_name %}" >
+                        <img src="media/{{ game.game_image }}" alt="..." class="img-thumbnail">
+                      </a>
                   </div>
-                  <div id="mobile" class="tab-pane fade">
-                        {%  for game_list in format_mobile_list %}
-                        <div class="story-content">
-                            <div class="row story-hover">
-                        {% for game in game_list %}
-                            <div class="col-sm-4 col-md-4">
-                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
-                                  <img src="media/{{ game.game_image }}" alt="...">
-                                </a>
-                            </div>
-                        {% endfor %}
-                            </div>
-                        </div>
-                        {%  endfor %}
-                  </div>
-                  <div id="shooter" class="tab-pane fade">
-                        {%  for game_list in format_shooter_list %}
-                        <div class="story-content">
-                            <div class="row story-hover">
-                        {% for game in game_list %}
-                            <div class="col-sm-4 col-md-4">
-                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
-                                  <img src="media/{{ game.game_image }}" alt="...">
-                                </a>
-                            </div>
-                        {% endfor %}
-                            </div>
-                        </div>
-                        {%  endfor %}
-                  </div>
-                  <div id="freeworld" class="tab-pane fade">
-                        {%  for game_list in format_freeworld_list %}
-                        <div class="story-content">
-                            <div class="row story-hover">
-                        {% for game in game_list %}
-                            <div class="col-sm-4 col-md-4">
-                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
-                                  <img src="media/{{ game.game_image }}" alt="...">
-                                </a>
-                            </div>
-                        {% endfor %}
-                            </div>
-                        </div>
-                        {%  endfor %}
-                  </div>
-                  <div id="strategy" class="tab-pane fade">
-                        {%  for game_list in format_strategy_list %}
-                        <div class="story-content">
-                            <div class="row story-hover">
-                        {% for game in game_list %}
-                            <div class="col-sm-4 col-md-4">
-                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
-                                  <img src="media/{{ game.game_image }}" alt="...">
-                                </a>
-                            </div>
-                        {% endfor %}
-                            </div>
-                        </div>
-                        {%  endfor %}
-                  </div>
-                  <div id="racing" class="tab-pane fade">
-                        {%  for game_list in format_racing_list %}
-                        <div class="story-content">
-                            <div class="row story-hover">
-                        {% for game in game_list %}
-                            <div class="col-sm-4 col-md-4">
-                                <a href="{% url 'TzarioGames:game' game.game_name %}" class="thumbnail">
-                                  <img src="media/{{ game.game_image }}" alt="...">
-                                </a>
-                            </div>
-                        {% endfor %}
-                            </div>
-                        </div>
-                        {%  endfor %}
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-1">
-
-            </div>
+              {% endfor %}
+              </div>
+          </div>
+          <div class="tab-pane" id="mobile" role="tabpanel">
+              mobile
+          </div>
+          <div class="tab-pane" id="freeworld" role="tabpanel">
+              free
+          </div>
+          <div class="tab-pane" id="strategy" role="tabpanel">
+              strat
+          </div>
         </div>
     </div>
 
