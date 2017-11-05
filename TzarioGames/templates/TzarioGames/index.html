@@ -32,6 +32,7 @@
       </div>
     </nav>
     <br>
+    <br>
     <div class="container">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
@@ -47,6 +48,12 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#strategy" role="tab">Strategy</a>
           </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#shooter" role="tab">Shooter</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#racing" role="tab">Racing</a>
+            </li>
         </ul>
 
         <!-- Tab panes -->
@@ -54,23 +61,69 @@
           <div class="tab-pane active" id="popular" role="tabpanel">
               <div class="row">
                   {% for game in unformat_game_list %}
-                  <div class="col-3">
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 py-2">
                       <a href="{% url 'TzarioGames:game' game.game_name %}" >
                         <img src="media/{{ game.game_image }}" alt="..." class="img-thumbnail">
                       </a>
                   </div>
-              {% endfor %}
+                  {% endfor %}
               </div>
           </div>
           <div class="tab-pane" id="mobile" role="tabpanel">
-              mobile
+              <div class="row">
+                  {% for game in unformat_mobile_list %}
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 py-2">
+                      <a href="{% url 'TzarioGames:game' game.game_name %}" >
+                        <img src="media/{{ game.game_image }}" alt="..." class="img-thumbnail">
+                      </a>
+                  </div>
+                  {% endfor %}
+              </div>
           </div>
           <div class="tab-pane" id="freeworld" role="tabpanel">
-              free
+              <div class="row">
+                  {% for game in unformat_freeworld_list %}
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 py-2">
+                      <a href="{% url 'TzarioGames:game' game.game_name %}" >
+                        <img src="media/{{ game.game_image }}" alt="..." class="img-thumbnail">
+                      </a>
+                  </div>
+                  {% endfor %}
+              </div>
           </div>
           <div class="tab-pane" id="strategy" role="tabpanel">
-              strat
+              <div class="row">
+                  {% for game in unformat_strategy_list %}
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 py-2">
+                      <a href="{% url 'TzarioGames:game' game.game_name %}" >
+                        <img src="media/{{ game.game_image }}" alt="..." class="img-thumbnail">
+                      </a>
+                  </div>
+                  {% endfor %}
+              </div>
           </div>
+        <div class="tab-pane" id="shooter" role="tabpanel">
+            <div class="row">
+                  {% for game in unformat_sooter_list %}
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 py-2">
+                      <a href="{% url 'TzarioGames:game' game.game_name %}" >
+                        <img src="media/{{ game.game_image }}" alt="..." class="img-thumbnail">
+                      </a>
+                  </div>
+                  {% endfor %}
+              </div>
+        </div>
+        <div class="tab-pane" id="racing" role="tabpanel">
+            <div class="row">
+                  {% for game in unformat_racing_list %}
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 py-2">
+                      <a href="{% url 'TzarioGames:game' game.game_name %}" >
+                        <img src="media/{{ game.game_image }}" alt="..." class="img-thumbnail">
+                      </a>
+                  </div>
+                  {% endfor %}
+              </div>
+        </div>
         </div>
     </div>
 
