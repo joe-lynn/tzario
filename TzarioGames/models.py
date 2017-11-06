@@ -24,6 +24,7 @@ class Game(models.Model):
     game_url = models.CharField(max_length=200)
     game_added_date = models.DateField(default=timezone.now)
     game_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    game_visits = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.game_name

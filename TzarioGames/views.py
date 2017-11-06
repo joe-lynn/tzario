@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
+from random import randint
+from django.shortcuts import redirect
 
 from .models import Game
 
@@ -41,9 +43,15 @@ def index(request):
 
 
 def game(request, game_name):
+    game_list = Game.objects.all()
+    for visited_game in game_list:
+        if visited_game.game_name == game_name:
+            visited_game.game_visits += 1
+            visited_game.save()
+
     template = loader.get_template('TzarioGames/game.html')
-    game = Game.objects.get(game_name=game_name)
-    context = {'game': game}
+    curr_game = Game.objects.get(game_name=game_name)
+    context = {'curr_game': curr_game}
     return HttpResponse(template.render(context, request))
 
 
@@ -57,3 +65,10 @@ def contact(request):
     template = loader.get_template('TzarioGames/contact.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+
+def random(request):
+    game_list = Game.objects.all()
+    rand_game = game_list[randint(0, len(game_list) - 1)]
+    game_name = rand_game.game_name
+    return redirect("/game/" + game_name)

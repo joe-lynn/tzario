@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^game/(?P<game_name>[\x00-\x7F]+)/$', views.game, name='game'),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
+    url(r'^random/$', views.random, name='random'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
