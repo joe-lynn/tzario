@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{% static 'TzarioGames/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'TzarioGames/index_html.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'TzarioGames/normalize.css' %}" />
     <script src="{%  static 'TzarioGames/jquery-3.1.1.min.js' %}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="{%  static 'TzarioGames/bootstrap.min.js' %}"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <title>Tzario</title>
     <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}/favicon.ico"/>
 </head>
@@ -50,7 +51,7 @@
         <br>
         <div class="card text-center">
           <div class="card-header">
-            <ul class="nav nav-pills card-header-pills nav-justified" role="tablist">
+            <ul class="nav nav-pills card-header-pills nav-justified flex-column flex-md-row" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#popular" role="tab">Popular</a>
               </li>
